@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>MLB Stats Interactive Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+    <!-- D3 library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Our Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CSS Imports -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <style>
+      .navbar-brand img {
+          height: 40px; 
+      }
+
+      /* Custom Button Styles */
+      .btn-group .btn {
+          font-size: 14px;
+          font-weight: 600;
+          padding: 10px 20px;
+          margin-right: 5px;
+      }
+
+      .stat-option.active {
+          background-color: #007bff;
+          border-color: #007bff;
+          color: white;
+      }
+
+      .stat-option:hover {
+          background-color: #0056b3;
+          border-color: #0056b3;
+          color: white;
+      }
+
+      .btn-outline-primary {
+          border-radius: 20px;
+          border-color: white;
+          transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/1200px-Major_League_Baseball_logo.svg.png" alt="Baseball Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/analysis">Analysis</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about_us">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/works_cited">Works Cited</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Page Title-->
+    <h1 class="text-center">MLB Stats Interactive Map</h1>
+    <p class="text-center">Select a year and explore MLB stats with our interactive map!</p>
+    <div class="container-fluid">
+      <div class="row mt-3 d-flex align-items-center justify-content-center">
+          <!-- Year Selection -->
+          <div class="col-md-6 text-center">
+              <label for="year-dropdown" class="form-label fw-bold">Select Year:</label>
+              <select id="year-dropdown" class="form-select">
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+              </select>
+          </div>
+  
+          <!-- Stat Selection -->
+          <div class="col-md-6 text-center">
+              <label for="stat-option" class="form-label fw-bold">Select Stat:</label>
+              <div class="btn-group d-flex justify-content-center w-100" role="group" aria-label="Stat options">
+                  <button type="button" class="btn btn-outline-primary stat-option flex-fill" data-value="HR">Home Runs</button>
+                  <button type="button" class="btn btn-outline-primary stat-option flex-fill" data-value="H">Total Hits</button>
+                  <button type="button" class="btn btn-outline-primary stat-option flex-fill" data-value="AVG">Batting Average</button>
+                  <button type="button" class="btn btn-outline-primary stat-option flex-fill" data-value="R">Runs</button>
+                  <button type="button" class="btn btn-outline-primary stat-option flex-fill" data-value="SO">Strikeouts</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+      <!-- Map Container -->
+      <div class="row mt-3">
+          <div class="col-md-12">
+              <div id="map_container"></div>
+          </div>
+      </div>
+  </div>
+
+    <!-- External JavaScript -->
+    <script type="text/javascript" src="static/js/map.js"></script>
+
+  </body>
+</html>

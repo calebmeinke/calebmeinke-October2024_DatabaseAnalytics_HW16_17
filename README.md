@@ -1,1 +1,2 @@
-# October2024_DatabaseAnalytics_HW16
+# project-3-group-06
+Data Bootcamp Project 3 Group 6
